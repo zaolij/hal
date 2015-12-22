@@ -6,7 +6,7 @@ Trigger triggers[] = {
     Trigger("bell", 49, HIGH),
     Trigger("knife_switch", 53, HIGH, 5000),
     Trigger("passage", 28, LOW),
-    Trigger("heater", 47, LOW),
+    Trigger("heater", 47, HIGH),
     Trigger("button_up", 43, HIGH),
     Trigger("button_down", 41, HIGH),
     Trigger("button_play", 39, HIGH),
@@ -19,9 +19,6 @@ Switch switchs[] = {
     Switch("ampli", 26),
     Switch("belgaleft", 52),
     Switch("belgaright", 50),
-    Switch("knife_r", 23),
-    Switch("knife_g", 25),
-    Switch("knife_b", 27)
 };
 
 Animation animations[] = {
@@ -33,9 +30,6 @@ Animation animations[] = {
     Animation("kitchen", 7),
     Animation("buzzer", 45, true),
     Animation("bell_eyes", 13),
-    Animation("roof_r", 10),
-    Animation("roof_g", 11),
-    Animation("roof_b", 8),
     Animation("belgatop", 9)
 };
 
@@ -46,9 +40,14 @@ Sensor sensors[] = {
     Sensor("light_outside", 2)
 };
 
+Rgb rgbs[] = {
+    Rgb("knife_leds", false, 23, 25, 27),
+    Rgb("roof", true, 10, 11, 8)
+};
+
 
 Switch & power_supply = switchs[0];
-HAL_CREATE(hal, sensors, triggers, switchs, animations);
+HAL_CREATE(hal, sensors, triggers, switchs, animations, rgbs);
 
 int WATCHDOG_QUESTION_PIN = 27;
 int WATCHDOG_ANSWER_PIN   = 29;
